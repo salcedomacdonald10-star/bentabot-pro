@@ -1,0 +1,22 @@
+[build]
+command = "echo 'Static site, no build needed'"
+publish = "."
+functions = "functions"
+
+[env]
+  [env.production]
+      [env.production.context.production.environment]
+          ADMITAD_API_KEY = ""
+              ADMITAD_API_SECRET = ""
+
+              # Environment variables (set these in Netlify dashboard)
+              # ADMITAD_API_KEY = your_api_key_here
+              # ADMITAD_API_SECRET = your_api_secret_here
+
+              [[redirects]]
+              from = "/.netlify/functions/:name"
+              to = "/.netlify/functions/:name"
+              status = 200
+
+              [functions]
+              node_bundler = "esbuild"
